@@ -14,6 +14,9 @@ public class Product {
         return rating;
     }
 
+    public void setRating(){
+    }
+
     public String getName(){
         return name;
     }
@@ -26,5 +29,4 @@ public class Product {
     public String toString() {
         return "Product{name='" + name + "', category='" + desc + "', rating=" + rating + "}";
     }
-
 }

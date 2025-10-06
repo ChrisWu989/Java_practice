@@ -10,19 +10,9 @@ import java.util.PriorityQueue;
 
 public class PracticeCollection {
     public static void main(String[] args) {
-
-        // List<Integer> list = new ArrayList<>();
-        // list.add(1);
-        // list.add(2);
-        // list.add(3);
-
-        // list.isEmpty();
-        // list.toArray();
-
         // Iterator<Integer> iterator = list.iterator();
         // while (iterator.hasNext()) {
         //     System.out.println(iterator.next());
-            
         // }
 
         // Queue FIFO
@@ -51,10 +41,17 @@ public class PracticeCollection {
         productList.add(new Product("Random Smartphone", "Test", 2));
         productList.add(new Product("Max Smartphone", "Test", 3));
 
-        Collections.sort(productList, (o1, o2) -> o2.getRating() - o1.getRating());
-        System.out.println(productList.toString());
-        //sorted based on names
-        // comparator/ iterator
-        //compare objects only
+        //Collections.sort(productList, (o1, o2) -> o2.getRating() - o1.getRating());
+        //System.out.println(productList.toString());
+
+        // Comparator and Comparable
+        List<Integer> list = new ArrayList<>();
+        list.add(3);
+        list.add(2);
+        list.add(1);
+        // list.isEmpty();
+        // list.toArray();
+
+        Collections.sort(productList, new NameComparator());
     }
 }
