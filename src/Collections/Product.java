@@ -14,9 +14,6 @@ public class Product {
         return rating;
     }
 
-    public void setRating(){
-    }
-
     public String getName(){
         return name;
     }
