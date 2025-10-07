@@ -77,5 +77,7 @@ public class PracticeCollection {
 
         boxes2.sort(sorted.reversed());
         System.out.println("Descending: " + boxes2);
+
+        //Collections always modifies the list
     }
 }
