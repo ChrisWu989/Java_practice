@@ -12,13 +12,28 @@ public class MapPractice {
 
         System.out.println(map.toString());
 
-        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
+        // hash, key, value, next, before, after
+        // LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>(16, 0.75f, true);
+        // linkedHashMap.put(1, "One");
+        // linkedHashMap.put(2,"Two");
+        // linkedHashMap.put(3, "Three");
 
-        System.out.println(map.get(2));
+        // linkedHashMap.get(2); //which element accessed requently goes to end
+        // linkedHashMap.forEach((s,e) -> System.out.println(s + " " + e));
 
-        //implement custom array list automatically incresae the elements 
-        //default capacity of 16 must be a power of 2
-        // default load factor used to determine if we resize hashmap or not
-        //treeify 8 nodes
+        Map<Integer, String> treemap = new TreeMap<>((Integer o1, Integer o2) -> o2 - o1);
+        treemap.put(2, "Three");
+        treemap.put(0,"Zero");
+        treemap.put(1, "Two");
+
+        treemap.forEach((Integer integer,String s) -> System.out.println(integer + ":" + s));
+
+    //     System.out.println(map.get(2));
+
+    //     CustomArrayList<Integer> customList = new CustomArrayList<>();
+    //     for (int i = 0; i < 10; i++) {
+    //         customList.add(i);
+    //     }
+    //     System.out.println(customList);
     }
 }
