@@ -22,3 +22,6 @@ class BoxComparable<T extends Comparable<T>> implements Comparable<BoxComparable
     }
 }
 //how to implement comparator and comparable work in generic classes
+// Make hashset/hashmap 
+
+//stream = ja stam
