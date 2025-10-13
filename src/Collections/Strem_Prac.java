@@ -35,6 +35,9 @@ public class Strem_Prac {
 
         List<List<Integer>> lists = Arrays.asList(Arrays.asList(1,2,3),Arrays.asList(44,22,32),Arrays.asList(10,22,31));
         lists.stream().flatMap((List<Integer> s) -> s.stream()).forEach(System.out::println);
+
+        List<Integer> ll = Arrays.asList(1,2,3);
+        Stream<Integer> stream = ll.stream().filter(i -> i > 2).peek(System.out::println);
         
     }
 }
