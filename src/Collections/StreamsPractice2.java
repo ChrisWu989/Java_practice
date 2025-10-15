@@ -42,6 +42,7 @@ public class StreamsPractice2 {
     }
 
 }
-//student class where we have student id, dept, subjectname
-// group students by depts
-// make list of students 
+//Create student class where we have student id, dept, subjectname
+// we want to group students by depts
+// we want to make list of students
+// Use collections 
