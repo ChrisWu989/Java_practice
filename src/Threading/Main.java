@@ -20,6 +20,7 @@ public class Main {
         Employee e2 = new Employee("Lebron", meetingRoom);
         Employee e3 = new Employee("Bronny", meetingRoom);
 
+        // e1.setPriority(Thread.MAX_PRIORITY);
         e1.start();
         e2.start();
         e3.start();
