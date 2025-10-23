@@ -1,0 +1,14 @@
+Atomic Integers , double, long
+Atomic Boolean
+
+CAS [Compare and Swap, Compare and Set]
+    - Low Level Operation
+    - Atomicity[All or nothing]
+CAT(oldvalue, new value) -> memoery
+Volatimr keyword
+
+Threadpool
+    - Has multiple tasks
+    - What if manually threads to be created
+        - Manage life cycle
+        - In JVM when therad gets created (Stack)

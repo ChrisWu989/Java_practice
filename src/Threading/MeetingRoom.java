@@ -5,9 +5,9 @@ import java.util.concurrent.locks.ReentrantLock;
 public class MeetingRoom {
 
     
-    ReentrantLock lock = new ReentrantLock();
-    Condition condition = lock.newCondition();
-    private boolean isOccupied;
+    private final ReentrantLock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
+    private boolean isOccupied = false;
 
     public void enterRoom(Employee e) {
         lock.lock();
@@ -24,7 +24,7 @@ public class MeetingRoom {
                 }
             }
 
-            isOccupied = false;
+            isOccupied = true;
             condition.signal();
         }
         finally {
