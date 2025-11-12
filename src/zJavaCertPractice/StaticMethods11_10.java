@@ -1,4 +1,4 @@
-package JavaCertPractice;
+package zJavaCertPractice;
 // Static methods belong to class itself not instances of the class
 // Can call static method without creating an Object of that class
 // RULE: USE STATIC METHOD WHEN OPERATION IS RELATED TO CLASS AS A WHOLE AND DOES NOT REQUIRE OBJECT STATE

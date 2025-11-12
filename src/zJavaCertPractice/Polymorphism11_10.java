@@ -1,4 +1,4 @@
-package JavaCertPractice;
+package zJavaCertPractice;
 
 class Parent{
     public short getValue(){

@@ -1,4 +1,4 @@
-package JavaCertPractice;
+package zJavaCertPractice;
 
 class Vehicle {
     public void driveOnly(){

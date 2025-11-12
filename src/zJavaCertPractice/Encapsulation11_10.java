@@ -1,4 +1,4 @@
-package JavaCertPractice;
+package zJavaCertPractice;
 //Creating constructor that calls a parent class super class is called automatically
 class ClassX {
     ClassX(){
