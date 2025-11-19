@@ -1,0 +1,26 @@
+daylight Savings Time ends on Nov 6 at 2 AM in US/Eastern time zone.
+(As a result, 2 AM becomes 1 AM. In other words, one minute after 1.59 AM, 
+the clock shows 1 AM instead of 2 AM.), what will the following code print?
+
+LocalDateTime ld = LocalDateTime.of(2022, Month.NOVEMBER, 6, 1, 30);
+ZonedDateTime date1 = ZonedDateTime.of(ld, ZoneId.of("US/Eastern")); //1
+ZonedDateTime date2 = date1.plusHours(1); // 1
+System.out.println(date1.getHour()+" "+date2.getHour());
+
+Given that the local time where the code is run is 3PM and the local time zone 
+is 2 hours ahead of UTC, what will the above code print?
+(Assume that the date is 20th Jan 2021).
+Instant instant = Instant.now();
+System.olut.println(instant); // 2021-01-20 1pm
+
+LocalDate ld = LocalDate.now().withMonth(6).withDayOfMonth(2); //june 2nd
+LocalTime lt = LocalTime.of(6, 0, 0); //6 am
+LocalDateTime ldt = ld.atTime(lt); // june 2nd 6 am
+ZoneOffset nyOffset = ZoneOffset.ofHoursMinutes(-5, 0); // 1am (does not take care of zone or dst)
+ZoneId nyZone = ZoneId.of("America/New_York"); // New York
+OffsetDateTime nyOdt = ldt.atOffset(nyOffset); //
+ZonedDateTime nyZdt = ldt.atZone(nyZone);
+Duration d = Duration.between(nyOdt, nyZdt);
+System.out.println(d);
+System.out.println(nyOdt);
+System.out.println(nyZdt);
