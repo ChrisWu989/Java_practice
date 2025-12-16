@@ -1,0 +1,29 @@
+class Bond
+{
+    String ticker; double coupon; java.time.LocalDate maturity;
+}
+
+class Portfolio implements Serializable
+{
+    String accountName;
+    Bond[] bonds;
+}
+
+public class TestClass {
+  public static void main(String[] args) throws Exception{
+     Portfolio portfolio = // get portfolio somehow
+     // serialize portfolio
+  }
+}
+
+/*
+Which of the following approaches can be taken independent of each other so that a Portfolio object 
+can be serialized while preserving the state of the Bond objects contained in Portfolio? *
+Select 2 option(s):
+1. It can be serialized as it is without any modification. -- Invalid
+2. Just have Bond class implement Serializable.
+3. Just make 'bonds' field in Portfolio transient.
+4. Change the type of bonds from Bond[] to ArrayList<Bond> bonds;
+5. Make bonds array transient in Portfolio and implement readObject(ObjectInputStream os)
+  and writeObject(ObjectOutputStream os)  methods to read and write the state of Bond objects explicitly.
+/

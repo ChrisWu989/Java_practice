@@ -1,0 +1,20 @@
+import java.util.*;
+class Request { }
+class RequestCollector{
+    //1 : Insert declaration here
+    
+    public synchronized void addRequest(Request r){
+    container.add(r);
+    }
+    public synchronized Request getRequestToProcess(){
+    return container.poll();
+    }
+}
+/*
+1 Queue<Request> container = new LinkedList<Request>(); -- Valid
+2. LinkedList container = new LinkedList(); -- Not Valid
+3. Queue container = new PriorityQueue(); -- Not Valid
+4. Queue<Request> container = new Queue<Request>(); -- Not Valid
+5. List al = new ArrayList(); -- Not Valid
+6. None of these. 
+*/

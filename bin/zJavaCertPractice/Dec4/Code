@@ -1,0 +1,27 @@
+class Base{
+   public <T extends CharSequence> Collection<String> transform(Collection<T> list)
+   {
+      return new ArrayList<String>();
+   }
+    
+}
+
+class Derived extends Base{
+   //public  Collection<String> transform(Collection<String> list) {
+        return new HashSet<String>(); }; //1 Works (Overriding)
+   
+   //public <T extends String> Collection<T> transform(Collection<T> list) {
+         return new HashSet<T>();}; //2 Invalid
+   
+   //public <T extends CharSequence> List<T> transform(Collection<T> list) {
+         return new ArrayList<T>(); }; //3 Works (Overloading)
+   
+   //public <T extends CharSequence> Collection<T> transform(List<T> list) {
+         return new HashSet<T>(); }; //4 Works (Overloading)
+    
+   //public <T super String> Collection<T> transform(List<String> list) {
+        return new HashSet<T>(); };//5 Works (Overloading)
+   
+   //public  Collection<CharSequence> transform(Collection<CharSequence> list) {
+         return new HashSet<CharSequence>();}; //6
+}

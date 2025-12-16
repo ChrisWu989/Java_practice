@@ -1,0 +1,137 @@
+What will the following code print?
+
+var a = new int[]{ 1, 2, 3, 4, 5};
+var b = new int[]{ 1, 2, 3, 4, 5, 3};
+var c = new int[]{ 1, 2, 3, 4, 5, 6};
+        
+int x = Arrays.compare(a, c); // a < c -> x < 0 -> -1
+int y = Arrays.compare(b, c); // 3 < 6 -> y < 0 -> -1
+System.out.println(x+" "+y); // -1 -1
+
+/*****************************************/ 
+/*****************************************/ 
+/*****************************************/ 
+
+public static void ifTest(boolean flag){
+   if (flag)   //1
+        if (flag)   //2
+            if (flag)   //3
+                System.out.println("False True");
+            else        //4
+                System.out.println("True False");
+        else        //5
+            System.out.println("True True");
+   else        //6
+        System.out.println("False False");
+}
+
+1. If run with an argument of 'false', it will print 'False False' // True
+2. If run with an argument of 'false', it will print 'True True' // False
+3. If run with an argument of 'true', it will print 'True False' // False
+4. It will never print 'True True' // True
+5. It will not compile. // False
+
+/*****************************************/ 
+/*****************************************/ 
+/*****************************************/ 
+
+
+//In file A.java
+package a;
+public class A{
+   A(){ }
+   public void  print(){ System.out.println("A"); }
+}
+
+//In file B.java
+package b;
+import a.*;
+public class B extends A{
+   B(){ }
+   public void  print(){ System.out.println("B"); }
+   public static void main(String[] args){
+      new B().print();
+   }
+}
+
+
+What will be printed when you try to compile and run class B?
+
+1. It will print A.
+2. It will print B.
+3. It will not compile. // Not compile (private constructors)
+4. It will compile but will not run. 
+5. None of the above.
+
+What will the following code print?
+  int i = 1;
+  int j = i++;
+  if( (i==++j) | (i++ == j) ){
+    i+=j;
+  }
+  System.out.println(i);
+
+/*****************************************/ 
+/*****************************************/ 
+/*****************************************/ 
+
+        ReadWriteLock rl = new ReentrantReadWriteLock();
+        Lock rlock = rl.readLock();
+        Lock wlock = rl.writeLock();
+
+Select 3 option(s):
+// Valid
+1. rlock.lock();
+System.out.println("read lock acquired");
+wlock.lock();
+System.out.println("write lock acquired");
+
+This code will print both the statements.
+
+// Invalid
+2. wlock.lock();
+System.out.println("write lock acquired");
+rlock.lock();
+System.out.println("read lock acquired");
+
+This code will print both the statements.
+
+// Valid
+3. rlock.lock();
+System.out.println("read lock acquired");
+rlock.lock();
+System.out.println("read lock acquired again");
+
+This code will print both the statements.
+
+// Invalid
+4. rlock.lock();
+rlock.lock();
+rlock.unlock();
+wlock.lock();
+System.out.println("write lock acquired");
+
+This code will print the statement.
+
+// Invalid
+5. rlock.lock();
+try{
+    wlock.tryLock();
+    System.out.println("write lock acquired");
+}catch(Exception e) {
+    e.printStackTrace();
+}
+
+This code will print an exception stack trace.
+
+// Valid
+6. rlock.lock();
+try{
+    wlock.tryLock();
+    wlock.unlock();
+    System.out.println("write lock acquired ");
+}catch(Exception e) {
+    e.printStackTrace();
+}
+
+This code will print an exception stack trace.

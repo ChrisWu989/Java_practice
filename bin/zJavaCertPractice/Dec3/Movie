@@ -1,0 +1,40 @@
+
+public class Movie{
+    private String title;
+    private String genre;
+    public Movie(String title, String genre){
+        this.title = title;
+        this.genre = genre;
+    }
+   //accessors not shown
+}
+
+main()
+Stream<Movie> sm = Stream.of( new Movie("a1", "a"),
+                              new Movie("a2", "a"),
+                              new Movie("b1", "b"), new Movie("c1", null));
+
+/*
+Which of the following code fragments will get you the map of all the genres and the number of movies belonging to each genre?
+
+1.Map<Optional<String>, Long > gcount = sm.collect(
+   Collectors.groupingBy(
+      movie -> Optional.ofNullable(movie.getGenre()), Collectors.counting()
+    )
+   );
+2. Map<String, Long > gcount = sm.collect(
+   Collectors.groupingBy(
+      movie -> Optional.ofNullable(movie.getGenre()), Collectors.counting()
+    )
+   );
+3. Map<Optional<String>, Integer > gcount = sm.collect(
+   Collectors.groupingBy(
+      movie -> Optional.ofNullable(movie.getGenre()), Collectors.counting()
+    )
+   );
+4. Map<Optional<String>, Long > gcount = sm.collect(
+   Collectors.groupingBy(
+      movie -> Optional.of(movie.getGenre()), Collectors.counting()
+    )
+   );
+*/

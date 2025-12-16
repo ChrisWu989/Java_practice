@@ -1,0 +1,23 @@
+import java.util.*;
+public class testerclass {
+    public static void main(String[] args) throws Exception {
+        List list = new ArrayList();
+        list.add("val1"); //1
+        list.add(2, "val2"); //2 --- Error adding at index 2 when it does not exist
+        list.add(1, "val3"); //3
+        System.out.println(list);
+     }
+}
+/*
+Which of the following statements are valid when defined inside a method?
+Select 2 option(s):
+1. String[ ] sa = new String[3]{ "a", "b", "c"}; -- Invalid
+2. String sa[ ] = { "a ", " b", "c"};
+3. String sa = new String[ ]{"a", "b", "c"}; -- Invalid
+4. String sa[ ] = new String[ ]{"a", "b", "c"}; -- Invalid
+5. String sa[ ] = new String[ ] {"a" "b" "c"}; -- Invalid
+6. var sa = {"""
+                 a
+                 b""", "c"};
+7. var[] sa = new String[ ]{"a", "b", "c"};
+ */

@@ -1,0 +1,48 @@
+class Item{
+    private int id;
+    private String name;
+    public Item(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String toString(){
+      return name;
+    }
+}
+
+
+public class Test {
+    public static void main(String[] args) {
+        List<Item> l = Arrays.asList(
+                new Item(1, "Screw"),
+                new Item(2, "Nail"),
+                new Item(3, "Bolt")
+        );
+
+       l.stream()
+//INSERT CODE HERE
+      .forEach(System.out::print);        
+    }
+}
+/* 
+Which of the following options can be inserted in the above code independent of each other, so that the code will print BoltNailScrew?
+1 .sorted((a, b)->a.getId().compareTo(b.getId())) -- Invalid Sorted Ascending
+2 .sorted(Comparator.comparing(a->a.getName())).map((i)->i.getName()) -- Valid Descending
+3 .map((i)->i.getName()) -- Invalid prints name
+4 .map((i)->i.getName()).sorted() -- Valid sorts names
+*/

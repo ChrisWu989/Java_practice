@@ -1,0 +1,59 @@
+
+Given the following code:
+//in file A.java
+package p1;
+public sealed class A permits p2.B{
+}
+
+//in file B.java
+package p2;
+public final class B extends p1.A{
+}
+
+
+Both the classes must belong to the same package for the code to compile irrespective of whether they belong to the same module or not.
+Class B will compile if, instead of final, it is made non-sealed // Correct
+Both the classes will compile as long as they are packaged in the same jar.
+The code will compile fine if both A and B are part of the same named module // Correct
+
+/******************************************************************************************/
+
+sealed interface Member permits Person{ //LINE A
+    String role();
+    void role(String role);
+}
+
+final record Person(String role) implements Member{ //LINE B
+    public void role(String r){
+    }
+};
+
+record Student(int id,  Person person)
+{
+   public String getRole(){ return person.role(); }
+   
+   public void setRole(String role){ person.role(role); } //LINE C
+}
+
+public  class TestClass{
+    
+    public static void m(Student m){
+        if(m instanceof Student(var id, Person(var role))){ //LINE D
+            System.out.println("role = "+role);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Student s = new Student(123, new Person("student")); //LINE E
+        m(s);
+    }
+}
+
+
+1. None of the marked lines are invalid and there is no cause for compilation error in the given code // Correct
+2. LINE B, because Person is a record and so, it cannot have a method that accepts an argument.
+3. LINE D
+4. LINE C, because Student is not allowed to have a setter method.
+5. LINE E
+6. LINE A, because an interface cannot be sealed.
+7. LINE B, because Person does not correctly implement the Member interface.

@@ -1,0 +1,80 @@
+Your application requires to store name value pairs such that the order of entries returned while iterating through the structure is deterministic. In other words, if you iterate over the same structure twice, the order of elements returned in both the iterations will be the same. Which of the following classes would you use?
+
+Select correct option
+
+HashMap
+LinkedHashSet
+Hashtable
+LinkedHashMap (Valid)
+TreeMap (Valid)
+
+-------------------------------------------------------------------------------------
+
+Which of the following statements regarding inner classes are true ?
+
+1. A non static inner class may have static members. (Valid)
+2. Anonymous inner classes cannot have any 'extends' or 'implements' clause. (Valid)
+3. Anonymous inner classes can only be created for interfaces. (Invalid - any class)
+4. Anonymous inner classes can never have initialization parameters. (Valid)
+5. Anonymous inner classes cannot be static. (Valid - inside method so no static)
+
+-------------------------------------------------------------------------------------
+
+You have created several threads in your application. To ensure that important tasks are performed quickly, you have increased the priority of some threads and lowered the priority of others. At run time, however, you observe that the lower priority threads rarely get a chance to run.  
+
+What is this problem called?
+1. Deadlock --- Threads waiting for each other, same recource being accessed at same time
+2. Livelock --- Threads not locked but no progress
+3. Thrashing --- Ram related
+4. Starvation --- Lower priority threads dont get a chance to progress
+
+-------------------------------------------------------------------------------------
+
+Which of the following are true about the "default" constructor?
+
+1. It is provided by the compiler only if the class and any of its super classes does not define any constructor. (True)
+2. It takes no arguments. (True)
+3. A default constructor is used to return a default value. (False)
+4. To define a default constructor, you must use the default keyword. (False)
+5. It is always public. (False)
+
+-------------------------------------------------------------------------------------
+
+You have a method that currently does not handle any exception thrown from the code contained in its method body. You are now changing this method to call another method that throws IOException.  
+  
+What changes, independent of each other, can you make to your method so that it will compile?  
+  
+Select correct option  
+1. Set the exception to null and don't rethrow it.  (False)
+2. Declare IOException in the throws clause of your method.  (True)
+3. Wrap the call to another method within a try-catch block that catches RuntimeException. (False)
+4. Wrap the call to another method within a try-catch block that catches Exception. (True)
+
+-------------------------------------------------------------------------------------
+
+class MyString extends String{
+   MyString(){ super(); }
+}
+String final cant be extended
+
+-------------------------------------------------------------------------------------
+
+Which of these are NOT part of the StringBuilder class?
+
+trim( ) (Invalid - String only)
+ensureCapacity(int ) (Valid)
+append(boolean) (Valid)
+reverse( ) (Valid)
+setLength(int) (Valid)
+compareTo (Valid)
+
+-------------------------------------------------------------------------------------
+
+Which of these statements about interfaces are true?
+
+1. Interfaces are always abstract. (True)
+2. An interface can have static methods. (True)
+3. All methods in an interface are abstract although you need not declare them to be so. (False - can be default now)
+4. Fields of an interface may be declared as transient or volatile but not synchronized. (False - public static final)
+5. Interfaces cannot be final. (True)
+6. Interfaces allow multiple implementation inheritance through default methods. (True - default methods allow classes to inherit from different interfaces)
