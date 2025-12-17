@@ -1,0 +1,215 @@
+What letters, and in what order, will be printed when the following program is compiled and run?
+
+public class FinallyTest{
+   public static void main(String args[]) throws Exception{
+       try{
+          m1();
+          System.out.println("A");
+       }
+       finally{
+          System.out.println("B");
+       }
+       System.out.println("C");
+   }
+   public static void m1() throws Exception { throw new Exception(); }
+}
+
+It will print C and B, in that order.
+
+It will print A and B, in that order.
+
+It will print B and throw Exception. // Valid
+
+It will print A, B and C in that order.
+
+Compile time error.
+
+/************************************************************************/
+
+You had to select 2 option(s)
+
+enum Pets implements java.io.Serializable
+{
+   DOG("D"), CAT("C"), FISH("F");
+   String name;   
+   Pets(String s) { }
+   public String getData(){ return name; }
+} 
+// name never assigned
+
+enum Pets
+{
+   DOG("D"), CAT("C"), FISH("F");
+   static String prefix = "I am ";
+   String name;   
+   Pets(String s) { name = prefix + s;}
+   public String getData(){ return name; }
+}
+// Not allowed (static final)
+
+
+public enum Pets
+{
+   DOG(1, "D"),
+   CAT(2, "C")
+   {
+        public String getData(){ return type+name; }
+   },
+   FISH(3, "F");
+   int type;
+   String name;   
+   Pets(int t, String s) { this.name = s; this.type = t;}
+   public String getData(){ return name+type; }
+}
+
+{
+   String name;
+   DOG("D"), CAT("C"), FISH("F");
+   Pets(String s) { name = s;}
+}
+
+
+enum Pets
+{
+   DOG("D"), CAT("C"), FISH("F");
+   String name;   
+   public Pets(String s) { }
+   public String getData(){ return name; }
+} // Invalid public constructpr
+
+enum Pets
+{
+   DOG("D"), CAT("C"), FISH("F");
+   var name;   
+   Pets(String s) { name = s; }
+   public String getData(){ return (String) name; }
+} // Invalid var
+
+/*******************************************************************************************/
+
+Consider the following code appearing in a module-info.java
+
+module com.amazing.movies{
+   requires transitive com.amazing.customer;
+}
+
+Identify correct statements.
+
+You had to select 1 option(s)
+
+1. Any module that requires the com.amazing.movies module must also require the com.amazing.customer module. //Invalid must require customer
+2. Any module that requires the com.amazing.movies module can use the com.amazing.customer module without requiring it. //correct
+3. Only a module that requires the com.amazing.movies module can use the com.amazing.customer module.
+4. Any module that requires the com.amazing.customer module must also require the com.amazing.movies module.
+5. Any module that requires the com.amazing.movies module must require the com.amazing.customer module instead of com.amazing.movies.
+
+transitive to let movies module see customer
+
+/*********************************************************************************************************/
+
+Given that java.lang.String has two overloaded toUpperCase methods - toUpperCase() and toUpperCase(Locale ), consider the following code:
+
+String name = "bob";
+String val = null;
+//Insert code here
+System.out.print(val);
+
+Which of the following code fragments can be inserted in the above code so that it will print BOB?
+
+1. Supplier<String> s = name::toUpperCase;
+val = s.get();
+
+2. Supplier<String> s = name::toUpperCase;
+val = s.apply();
+
+3. Function<String> f = name::toUpperCase;
+val = f.get();
+
+4. Function<String> f = name::toUpperCase;
+val = f.apply();
+
+5. Function<String, Locale> f = name::toUpperCase;
+val = f.apply();
+
+6. Only one of the above is correct.
+
+/*************************************************************************************************/
+Given the following code:
+
+sealed interface Cacheable permits Value, Result{
+    default void clear(){ System.out.println("clearing cache..."); }
+}
+
+1. non-sealed interface Value extends Cacheable{ } //valid
+non-sealed interface Result extends Cacheable{ } // Valid
+
+2. interface Value extends Cacheable{ } // Not valid
+interface Result extends Cacheable{ } // Not Valid
+
+3. sealed interface Value extends Cacheable{ } // Not Valid
+sealed interface Result extends Cacheable{ } // Not Valid
+
+/************************************************************************************************/
+
+public void getLocks(Object a, Object b)
+{
+ synchronized(a)
+ {
+  synchronized(b)
+  {
+    //do something
+  }
+ }
+}
+
+Object obj1 = new Object();
+Object obj2 = new Object();
+
+obj1 and obj2 are accessible to two different threads and the threads are about to call the getLocks() method. 
+Assume the first thread calls the method getLocks(obj1, obj2). Which of the following statements is/are correct?
+
+1. A deadlock can be avoided if the second thread calls getLocks(obj2, obj1) // False
+
+2. A deadlock can be avoided if the second thread calls getLocks(obj1, obj2) // True
+
+3. A deadlock can be avoided only if the second thread calls getLocks() after first thread exits out of it. // False
+
+4. A deadlock will not occur even if the second thread calls getLocks() any time and passes parameters in any order. // False
+
+/***********************************************************************************************/
+What is the result of executing the following fragment of code:
+
+boolean b1 = false;
+int i1 = 2;
+int i2 = 3;
+if (b1 = i1 == i2){
+   System.out.println("true");
+} else{
+   System.out.println("false");
+} // False
+
+/***********************************************************************************************/
+What can be inserted in the code below so that it will print UP UP UP?
+
+public class Speak {
+    public static void main(String[] args) {
+        Speak s = new GoodSpeak();
+
+        INSERT CODE HERE
+
+    }
+}
+class GoodSpeak extends Speak implements Tone{
+    public void up(){
+        System.out.println("UP UP UP");
+    }
+}
+interface Tone{
+    void up();
+}
+
+1. ((Tone)s).up(); // correct
+2. s.up();
+3. ((GoodSpeak)s).up(); // correct
+4. (GoodSpeak)s.up();
+5. (Tone)(GoodSpeak)s.up();
