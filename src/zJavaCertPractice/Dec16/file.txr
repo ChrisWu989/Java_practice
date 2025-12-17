@@ -1,0 +1,197 @@
+var nums = List.of(1, 2, 3, 4, 5, 6, 7).stream();
+Predicate<Integer> p = //a predicate goes here
+
+Optional<Integer> value = nums.filter(p).reduce((a, b)->a+b);
+value.ifPresent(System.out::println);
+
+1. setting p to a->a<0; will produce no output. // Valid
+2. setting p to a->a<0; will generate a NullPointerException. // Invalid
+3. setting p to a->a<0; will generate a NoSuchElementException. // Invalid
+4. setting p to a->a%2==0; will produce 12. // Valid
+5. setting p to a->a%2==0; will produce 16. // Invalid
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+public class Book {
+   private String title;
+   private String genre;
+   public Book(String title, String genre){
+this.title = title; this.genre = genre;
+   }
+
+//accessors not shown
+}
+
+List<Book> books = //code to create the list goes here
+
+Comparator<Book> c1 = (b1, b2)->b1.getGenre().compareTo(b2.getGenre()); //1
+books.stream().sorted(c1.thenComparing(Book::getTitle)); //2
+System.out.println(books);
+
+1. It will print the list that is sorted by genre and then sorted by title within. // Invalid
+2. It will print the list that is sorted by title and then sorted by genre within. // Invalid
+3. It will print the list as it is. // Valid (we are working on ref not actual list)
+4. Code will fail to compile because of code at //1.
+5. Code will fail to compile because of code at //2.
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+1. String String = """
+     Str
+    Str""";
+The length of the string pointed to by String will be 8. // True
+
+2. String string = """Str Str""";
+The length of the string pointed to by string will be 7. // Fail to compile
+
+3. String str = """
+Str Str""";
+System.out.println(str.charAt(4));
+This will print S. // True
+
+4. String String =
+"""
+   Str
+    Str
+""";
+System.out.println(String.charAt(4));
+This will print S. // False prints a newline
+
+5. String String = """
+     Str
+    Str""";
+This will not compile. // False compiles
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+Deque<Integer> d = new ArrayDeque<>();
+d.push(1);
+d.push(2);
+d.push(3); // 3, 2, 1
+System.out.println(d.pollFirst()); // removes 3
+System.out.println(d.poll()); // removes 2
+System.out.println(d.pollLast());// removes 1
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+abstract class Base{
+    abstract int power();
+}
+
+class A extends Base{
+@Override
+int power(){ return 0; }
+}
+
+public class TestClass
+{
+
+   static void processBase(Base base){
+      A a = null;
+      if(base instanceof A a ){
+        System.out.println(a.power());
+        }
+        System.out.println("a is "+a);
+    }
+  
+  public static void main(String args[]){
+    processBase(new A());
+  }
+}
+
+1. 0
+a is A@5acf98000
+2. a is null0
+3. <stack trace for NullPointerException>
+4. <stack trace for NullPointerException>
+5. a is null
+6. Compilation failure. // True
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+//creating Book objects using Book(String title, String author) constructor
+var books = List.of(new Book("The Outsider", "Stephen King"),
+        new Book("The Shining", "Stephen King" ), new Book("Uri", "India"));
+Stream<Book> bkStrm = books.stream();//
+
+long count = *INSERT CODE HERE*;
+System.out.println(count);
+
+Assuming Book class has appropriate constructor and accessor methods, which of the following 
+statements will correctly print the number of unique authors in the list of Books?
+1. bkStrm.map(Book::getAuthor).collect(Collectors.toSet()).count() // Cannot count set need size()
+2. bkStrm.map(b->b.getAuthor()).distinct().count() // Valid
+3. bkStrm.filter(b->b.getAuthor()).count() // Valid
+4. bkStrm.map(b->b.getAuthor()).count() // Not Terminal
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+What will the following code print when compiled and run?
+
+Stream<Integer> values = IntStream.rangeClosed(10, 15).boxed(); //1
+Object obj = values.collect(Collectors.partitioningBy(x->x%2==0)); //2
+System.out.println(obj); // return 10 12 14
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+class Person{
+    private String name;
+    private int age;
+    public Person(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    //getters/setters not shown
+}
+
+
+List<Person> friends = Arrays.asList(new Person("Bob", 31),
+                                 new Person("Paul", 32),
+                                 new Person("John", 33));
+double averageAge = friends.stream().filter(f->f.getAge()<30)
+        .mapToInt(f->f.getAge())
+        .average().getAsDouble();
+System.out.println(averageAge);
+
+throw NoSuchElementException
+
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+
+public static void copy(String records1, String records2) {
+        try (
+                InputStream is = new FileInputStream(records1);
+                OutputStream os = new FileOutputStream(records2);  ) {  
+
+            byte[] buffer = new byte[1024];
+            int bytesRead = 0;
+            while ((bytesRead = is.read(buffer)) != -1) {
+                os.write(buffer, 0, bytesRead);
+                System.out.println("Read and written bytes " + bytesRead);
+            }
+        }
+        catch (  *INSERT CODE HERE*  e ) { //LINE 100
+        }
+        
+    }
+
+Exception|IOException
+FileNotFoundException|SecurityException|IllegalArgumentException
+FileNotFoundException|IOException
+IOException|RuntimeException // Include this line
+IOException|NoSuchFileException
