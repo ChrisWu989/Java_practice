@@ -1,0 +1,292 @@
+Given:
+class Base{
+    public <T> List<T> transform(List<T> list)
+    {
+        return new ArrayList<T>();
+    }
+}
+
+class Derived extends Base{
+      *INSERT CODE HERE*
+}
+
+What can be inserted in the above code?
+Select 2 option(s):
+
+1. public ArrayList<Number> transform(List<Number> list) {
+    return new ArrayList<Number>();
+}; // Invalid
+
+2. public ArrayList<Object> transform(List<Object> list) {
+    return new ArrayList<Object>();
+}; //Indalid
+
+3. public <T> ArrayList<T> transform(List<T> list) {
+    return new ArrayList<T>();
+}; // Valid
+
+4.public <T> Collection<T> transform(List<T> list) {
+    return new ArrayList<T>();
+}; // Invalid
+
+5.public <T> Collection<T> transform(Collection<T> list) {
+    return new HashSet<T>();
+}; // Valid
+
+/********************************************************************************************************************/
+
+public class Student {
+    private Map<String, Integer> marksObtained
+                          = new HashMap<String, Integer>();
+    private ReadWriteLock lock = new ReentrantReadWriteLock();
+    public void setMarksInSubject(String subject, Integer marks){
+        // 1 INSERT CODE HERE
+        try{
+            marksObtained.put(subject, marks);
+        }finally{
+            // 2 INSERT CODE HERE
+        }
+
+    }
+    public double getAverageMarks(){
+       // valid code that computes average
+    }
+}
+
+What should be inserted at //1 and //2?
+
+1. lock.writeLock().acquire();
+and
+lock.writeLock().release();
+
+2. lock.writeLock().lock();
+and
+lock.writeLock().unlock(); // Valid
+
+3. lock.acquire();
+and
+lock.release();
+
+/***********************************************************************************************************************/
+
+What will be the output of the following program ?
+class CorbaComponent{
+    String ior;
+    CorbaComponent(){ startUp("IOR"); }
+    void startUp(String s){ ior  =  s; }
+    void print(){ System.out.println(ior); }
+}
+
+class OrderManager extends CorbaComponent{
+   OrderManager(){  }
+   void startUp(String s){  ior = getIORFromURL(s);   }
+   String getIORFromURL(String s){  return "URL://"+s; }
+}
+
+public class Application{
+   public static void main(String args[]){ start(new OrderManager()); }
+   static void start(CorbaComponent cc){ cc.print(); }
+}
+
+/**********************************************************************************************************************/
+
+Which line will print the string "MUM"?
+
+public class TestClass{
+   public static void main(String args []){
+      String s = "MINIMUM";
+      System.out.println(s.substring(4, 7)); //1 Valid
+      System.out.println(s.substring(5)); //2 Invalid
+      System.out.println(s.substring(s.indexOf('I', 3))); //3 Invalid
+      System.out.println(s.substring(s.indexOf('I', 4))); //4 Invalid
+   }
+}
+
+/*************************************************************************************************************************/
+
+Consider the following class:
+public class Student implements Serializable{
+    public static final long serialVersionUID = 1;
+    public String name;
+    public String grade;
+    public String toString(){ return "["+name+", "+grade+"]"; }
+}
+
+An object of this class was created as follows and was serialized to a file c:\temp\bob.ser:
+        Student s = new Student();
+        s.name = "bob";
+        s.grade = "10";
+After some time the Student class was changed as follows:
+public class Student implements Serializable{
+    public static final long serialVersionUID = 1;
+    public String id="S111";
+    public String name;
+    public String grade;
+    public int age=15;
+    public String toString(){ return "["+id+", "+name+", "+grade+", "+age+"]"; }
+}
+Now, the serialized file is read back as follows:
+   FileInputStream fis = new FileInputStream("c:\\temp\\bob.ser");
+   ObjectInputStream is = new ObjectInputStream(fis);
+   s = (Student) is.readObject();
+   is.close();            
+   System.out.println("Loaded "+s);
+
+What will it print?
+
+1. It will throw an exception while deserializing the file because the serialVersionUID field must not be public.
+2. Loaded [null, bob, 10, 0] // Valid primitives get default value and objects are null
+3. Loaded [S111, bob, 10, 15]
+4. It will have unpredicable values for id and age.
+5. It will throw an exception while serializing the file because the serialVersionUID field must not be final.
+
+/*********************************************************************************************/
+
+class T extends Thread
+{
+   public T(String name){ super(name); }
+    
+   public void run()
+   {
+    try{
+        for(int i=0; i<2; i++){
+            Thread.sleep(1000);
+            System.out.println(getName()+" "+getState());
+          }
+      }catch(InterruptedException ie){
+          System.out.println(getName()+" "+getState()+" ");
+      }
+   }
+}
+public class TestClass
+{
+   public static void main(String args[]) throws Exception
+   {
+      T t1 = new T("T1");
+      t1.start();
+      T t2 = new T("T2");
+      t2.start();
+      Thread.sleep(300);
+      t1.interrupt();
+   }
+}
+
+Which of the following is a possible output?
+1. T1 RUNNABLE
+T2 RUNNABLE
+T2 RUNNABLE
+T1 RUNNABLE
+
+2. T1 RUNNABLE
+T2 RUNNABLE
+T2 RUNNABLE
+
+3. T1 RUNNABLE // Invalid
+T2 RUNNABLE
+T2 RUNNABLE
+T1 TERMINATED
+
+4. T1 TERMINATED // Invalid
+T2 RUNNABLE
+T2 RUNNABLE
+
+/********************************************************************************************************************/
+
+Which statements about the following code are correct?
+
+interface House{
+  public default void lockTheGates(){
+     System.out.println("Locking House");
+  }
+}
+
+interface Office {
+  public void lockTheGates();
+}
+
+class HomeOffice implements House, Office{ //1
+  public void lockTheGates(){
+     System.out.println("Locking HomeOffice");
+  }
+}
+
+public class TestClass {
+  public static void main(String[] args) {
+     Office off = new HomeOffice();  //2
+     off.lockTheGates();
+  }
+}
+
+/***********************************************************************************************************/
+
+class Data implements Serializable{
+   int id = 20;  
+   static LocalDate dummyDate = LocalDate.of(2000, 01, 01);
+   transient LocalDate ld = LocalDate.of(2010, 01, 01);
+
+   private void readObject(ObjectInputStream stream)
+         throws IOException, ClassNotFoundException {
+         System.out.println("in readObject before " +id+" "+ld);
+         stream.defaultReadObject();
+         System.out.println("in readObject after " + id+" "+ld);
+         ld = dummyDate;
+   }
+   public Data(int id, LocalDate ld){
+       this.id = id; this.ld = ld;
+   }
+   public String toString(){
+       return "Data "+id+" "+ld;
+   }
+}
+public class TestClass {
+    public static void main(String[] args) throws IOException, ClassNotFoundException{
+        
+        Data d = new Data(10, LocalDate.of(2024, 10, 10));
+        ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream("c:\\temp\\data.ser"));
+        oos.writeObject(d); oos.close();
+        
+        ObjectInputStream ois = new ObjectInputStream( new FileInputStream("c:\\temp\\data.ser"));
+        d = (Data) ois.readObject();
+        System.out.println(d);
+    }
+}
+
+
+What will be the output?
+1. Data 10 2010-01-01
+2. in readObject before 20 null
+in readObject after 10 null
+Data 10 2000-01-01
+3. in readObject before 0 null
+in readObject after 10 2010-01-01
+Data 10 2000-01-01
+4. in readObject before 0 null
+in readObject after 10 null
+Data 10 2000-01-01
+
+/***************************************************************************************************************/
+
+Given:
+
+public class Student {
+    private String name;
+    private int marks;
+
+    //constructor and getters and setters not shown
+
+    public void addMarks(int m){
+        this.marks += m;
+    }
+    public void debug(){
+        System.out.println(name+":"+marks);
+    }
+}
+
+What will the following code print when compiled and run?
+
+  List<Student> slist = Arrays.asList(new Student("S1", 40),
+           new Student("S2", 35), new Student("S3", 30));
+
+  Consumer<Student> increaseMarks = s->s.addMarks(10);
+  slist.forEach(increaseMarks);
+  slist.stream().forEach(Student::debug);
